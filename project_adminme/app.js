@@ -50,7 +50,6 @@ app.get('/', function(req, res){
 	db.movies.find(function (err, docs) {
 		var mov = [];
 		docs.forEach(function(docs){
-			console.log(docs);
 			var rating_aux = 0;
 			if(docs.rating_num > 0){
 				rating_aux = docs.rating_tot / docs.rating_num;
@@ -241,7 +240,6 @@ app.delete('/delete/:id', function(req, res){
 
 //Rate Movie
 app.post('/vote',function(req, res){
-	console.log(req.body);
 	if(req.body.vote != ''){
 		db.movies.findOne({_id: mongojs.ObjectId(req.body.id)}, function(err, doc) {
 			if(err){
