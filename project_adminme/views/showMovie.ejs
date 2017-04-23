@@ -1,0 +1,39 @@
+<% include partials/header %>
+
+<div class="center_css">
+	<div>
+		<video width="600" height="400" controls="controls">
+ 			<source src="/uploads/<%= movieData.filename %>">
+		</video>		
+		<br>
+		<font size="5" face="Arial" class="table_title_css">
+			<%= movieData.title %>
+		</font>
+		<br>
+		<font size="3" face="Arial" class="table_title_css">
+			<% if(movieData.rating == 0){ %>
+				<td align="center">Rating: Not rated yet</td>
+			<% } else { %>
+				<td align="center">Rating: <%= movieData.rating %></td>
+			<% } %>
+			<form action="/vote" method="POST">
+				<label>Vote:</label> <input type="number" name="vote" min="1" max="5" patern="[0-9]{1,1}" maxlength="1">
+				<input type="submit" value="Vote">
+				<input type="hidden" name="id" value="<%= movieData.id %>">
+			</form>
+		</font>
+	</div>
+	<div class="descr">
+		<font size="2" face="Arial" >
+			Description: <%= movieData.desc %>
+		</font>
+	</div>
+</div>
+<div >
+	<font font-weight='bold'>
+				
+	</font>
+</div>
+
+
+<% include partials/footer %>

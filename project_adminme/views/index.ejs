@@ -1,0 +1,37 @@
+<% include partials/header %>
+	<div class="center_css">
+		<% if(movies == ''){ %>
+			Video library is empty
+		<% } else {%>
+			<table cellspacing="2" border="1" cellpadding="5">
+				<tr class="table_title_css">
+					<td>Rating</td>
+					<td>Title</td>
+					<td>Realise</td>
+					<td colspan="3">Action</td>
+				</tr>
+				<% movies.forEach(function(movies){ %>
+				<tr>
+					<% if(movies.rating == 0){ %>
+						<td align="center">Not rated yet</td>
+					<% } else { %>
+						<td align="center"><%= movies.rating %></td>
+					<% } %>
+					<td width="500"><a href="/showMovie/?id=<%= movies.id %>"><%= movies.title %></a></td>
+					<td><%= movies.realise %></td>
+  <!--					<td width="50">Info</td> -->
+					<td width="50"><a href="/editMovie/?id=<%= movies.id %>"> Edit</a></td>
+					<td width="50"><a href="#" class="deleteMovie" data-id="<%= movies.id %>" >Delete </a></td>
+				</tr>
+				<% }) %>
+			</table>
+		<% } %>
+	</div>
+	<div class="options">
+		<a href="/addMovie"> Add new Video </a>
+		<br>
+		<a href="/">Refresh</a>
+	</div>
+	
+
+<% include partials/footer %>

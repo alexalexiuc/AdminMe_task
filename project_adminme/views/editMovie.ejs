@@ -1,0 +1,28 @@
+<% include partials/header %>
+<div class="center_css">
+	<% if(errors != undefined){ %>
+		<ul color='red'>
+		<% errors.forEach(function(error){ %>
+			<li><%= error.msg %></li>
+		<% }) %>
+		</ul>
+	<% } %>
+	<% if(yes_aded == 1){ %>
+		Video updated successfully!
+	<% } %>
+	<form action="/edit" method="POST">
+		<table>
+			<tr>
+				<td><label>Movie Title</label></td>
+				<td><input type="text" name="title" value="<%= movieEdit.title %>" maxlength="50" size="52"></td>
+			</tr>
+			<tr>
+				<td valign="top" paddig="20"><label>Description</label></td>
+				<td><textarea name="description" cols="53" rows="5" maxlength="400" ><%= movieEdit.desc %></textarea></td>
+			</tr>
+				<input type="hidden" name="id" value="<%= movieEdit.id %>">
+		</table>
+		<input type="submit" name="Edit">
+	</form>
+</div>
+<% include partials/footer %>
